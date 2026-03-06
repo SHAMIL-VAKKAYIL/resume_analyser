@@ -1,0 +1,14 @@
+node_modules/
+.env
+.git/
+.gitignore
+npm-debug.log
+yarn-error.log
+pnpm-debug.log
+client/
+uploads/
+README.md
+Dockerfile
+.dockerignore
+__pycache__/
+*.pyc

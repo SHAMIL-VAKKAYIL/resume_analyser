@@ -1,0 +1,12 @@
+node_modules/
+dist/
+dist-ssr/
+.env
+.env.*
+.git/
+.gitignore
+npm-debug.log
+yarn-error.log
+pnpm-debug.log
+Dockerfile
+.dockerignore
