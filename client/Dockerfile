@@ -4,20 +4,18 @@ FROM node:20-alpine AS build
 # Set the working directory
 WORKDIR /app
 
-# Install pnpm
-RUN npm install -g pnpm
 
-# Copy package.json and pnpm-lock.yaml (if available)
-COPY package.json pnpm-lock.yaml* ./
+# Copy package.json
+COPY package.json ./
 
 # Install dependencies
-RUN pnpm install
+RUN npm install
 
 # Copy the rest of the application code
 COPY . .
 
 # Build the application
-RUN pnpm build
+RUN npm run build
 
 # Stage 2: Serve the built application with Nginx
 FROM nginx:alpine
