@@ -18,9 +18,9 @@ COPY server/ ./server/
 # Set working directory to the backend server
 WORKDIR /app/server
 
-# Add PNPM globally and install server dependencies
-RUN npm install -g pnpm
-RUN pnpm install
+# install server dependencies
+RUN npm install 
+
 
 # Expose the backend port
 EXPOSE 5000
@@ -29,4 +29,4 @@ EXPOSE 5000
 ENV NODE_ENV=production
 
 # Start the Node.js server
-CMD ["pnpm", "start"]
+CMD ["npm", "start"]
