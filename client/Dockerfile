@@ -1,15 +1,17 @@
 # Stage 1: Build the React application
 FROM node:20-alpine AS build
 
+# Install pnpm
+RUN npm install -g pnpm
+
 # Set the working directory
 WORKDIR /app
 
-
-# Copy package.json
-COPY package.json ./
+# Copy package files
+COPY package.json pnpm-lock.yaml ./
 
 # Install dependencies
-RUN npm install
+RUN pnpm install --frozen-lockfile
 
 # Copy the rest of the application code
 COPY . .
@@ -19,7 +21,7 @@ ARG VITE_API_URL
 ENV VITE_API_URL=$VITE_API_URL
 
 # Build the application
-RUN npm run build
+RUN pnpm run build
 
 # Stage 2: Serve the built application with Nginx
 FROM nginx:alpine
